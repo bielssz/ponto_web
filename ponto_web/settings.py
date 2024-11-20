@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-0p6-nir7$(ye-+p(x-36#n9k$gd^@!!^%6jwry+=(tppr=16+-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.vercel.app', 'localhost', 'https://ponto-web-woad.vercel.app']
+
 
 
 # Application definition
