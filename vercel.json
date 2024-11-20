@@ -1,0 +1,16 @@
+{
+    "builds": [
+      {
+        "src": "ponto_web/wsgi.py",
+        "use": "@vercel/python",
+        "config": {"MaxLambdSize": "15mb", "runtime": "pyhon3.12.2"}
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "ponto_web/wsgi.py"
+      }
+    ]
+  }
+  
