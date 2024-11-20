@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Funcionários</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Funcionários Cadastrados</h2>
+
+        <!-- Mensagens de sucesso ou erro -->
+        <div class="messages">
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+
+        <!-- Botão "Adicionar Funcionário" ao lado da tabela -->
+        <div class="actions">
+            <a href="{% url 'adicionar_funcionario' %}" class="btn">Adicionar Novo Funcionário</a>
+        </div>
+
+        <!-- Tabela de Funcionários -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for funcionario in funcionarios %}
+                <tr>
+                    <td>{{ funcionario.nome }}</td>
+                    <td>{{ funcionario.cpf }}</td>
+                    <td>
+                        <!-- Ações como botões -->
+                        <a href="{% url 'editar_funcionario' funcionario.id %}" class="btn btn-edit">Editar</a>
+                        <a href="{% url 'deletar_funcionario' funcionario.id %}" class="btn btn-delete" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Botão "Voltar para a Página Inicial" -->
+        <div class="actions">
+            <a href="{% url 'index' %}" class="btn btn-back">Voltar para a Página Inicial</a>
+        </div>
+        
+        {% if user.is_authenticated %}
+    <form method="POST" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
+{% else %}
+    <a href="{% url 'login' %}">Login</a>
+{% endif %}
+
+
+    </div>
+</body>
+</html>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        width: 80%;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    h2 {
+        text-align: center;
+        color: #333;
+    }
+
+    table {
+        width: 100%;
+        margin-top: 20px;
+        border-collapse: collapse;
+    }
+
+    table, th, td {
+        border: 1px solid #ddd;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    a {
+        text-decoration: none;
+        color: white;
+        padding: 10px 20px;
+        margin-right: 10px;
+        border-radius: 5px;
+        font-size: 1rem;
+        display: inline-block;
+        text-align: center;
+    }
+
+    .btn {
+        font-size: 1.2rem;
+        color: white;
+        background-color: #007bff;
+    }
+
+    .btn-edit {
+        background-color: #007bff;
+    }
+
+    .btn-edit:hover {
+        background-color: #0056b3;
+    }
+
+    .btn-delete {
+        background-color: #dc3545;
+    }
+
+    .btn-delete:hover {
+        background-color: #c82333;
+    }
+
+    .btn-back {
+        background-color: #28a745;
+    }
+
+    .btn-back:hover {
+        background-color: #218838;
+    }
+
+    .actions {
+        padding-top: 10px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+</style>
