@@ -2,6 +2,8 @@ import os
 from pathlib import Path
 import environ
 
+import pymysql
+pymysql.install_as_MySQLdb()
 # Inicializar o django-environ
 env = environ.Env(
     DEBUG=(bool, False)
@@ -69,10 +71,15 @@ WSGI_APPLICATION = 'ponto_web.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',  # Usar o backend MySQL
+        'NAME': 'db_ponto',               # O nome do banco de dados que você criou
+        'USER': 'root',                 # O usuário do MySQL (exemplo: root)
+        'PASSWORD': 'Lukinho12@',               # A senha do seu usuário MySQL
+        'HOST': 'localhost',                   # Ou o endereço do servidor se for remoto
+        'PORT': '3306',                        # A porta padrão do MySQL
     }
 }
+
 
 LOGOUT_REDIRECT_URL = '/'
 
