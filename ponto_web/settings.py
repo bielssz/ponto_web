@@ -76,7 +76,10 @@ DATABASES = {
         'USER': 'newuser',                 # O usuário do MySQL (exemplo: root)
         'PASSWORD': 'Lukinho12@',               # A senha do seu usuário MySQL
         'HOST': '192.168.1.71',                   # Ou o endereço do servidor se for remoto
-        'PORT': '3306',                        # A porta padrão do MySQL
+        'PORT': '3306',         
+        'OPTIONS': {
+            'connect_timeout': 60,  # Aumenta o tempo limite de conexão
+        },               # A porta padrão do MySQL
     }
 }
 
