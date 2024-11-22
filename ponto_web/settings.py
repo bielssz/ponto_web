@@ -73,9 +73,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',  # Usar o backend MySQL
         'NAME': 'db_ponto',               # O nome do banco de dados que você criou
-        'USER': 'root',                 # O usuário do MySQL (exemplo: root)
+        'USER': 'newuser',                 # O usuário do MySQL (exemplo: root)
         'PASSWORD': 'Lukinho12@',               # A senha do seu usuário MySQL
-        'HOST': 'localhost',                   # Ou o endereço do servidor se for remoto
+        'HOST': '192.168.1.71',                   # Ou o endereço do servidor se for remoto
         'PORT': '3306',                        # A porta padrão do MySQL
     }
 }
